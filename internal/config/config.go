@@ -38,7 +38,7 @@ func NewConfig() (*Config, error) {
 
 	port, err := getenvInt("PORT")
 	if err != nil {
-	        return 0, err
+	        return nil, err
         }
 	
 	cfg := Config{
