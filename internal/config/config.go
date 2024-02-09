@@ -13,11 +13,13 @@ const (
 type Config struct {
 	APIKey string
 	FFApp  string
+	Port   int
 }
 
 var envVars = []string{
 	"FF_API_KEY",
 	"FF_APP_URL",
+	"PORT",
 }
 
 func EnvVarExist(varName string) bool {
@@ -36,6 +38,7 @@ func NewConfig() (*Config, error) {
 	cfg := Config{
 		APIKey: os.Getenv("FF_API_KEY"),
 		FFApp:  os.Getenv("FF_APP_URL"),
+		Port:   os.Getenv("PORT"),
 	}
 
 	return &cfg, nil
