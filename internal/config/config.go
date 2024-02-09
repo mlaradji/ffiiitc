@@ -36,10 +36,15 @@ func NewConfig() (*Config, error) {
 		}
 	}
 
+	port, err := getenvInt("PORT")
+	if err != nil {
+	        return 0, err
+        }
+	
 	cfg := Config{
 		APIKey: os.Getenv("FF_API_KEY"),
 		FFApp:  os.Getenv("FF_APP_URL"),
-		Port:   getenvInt("PORT"),
+		Port:   port,
 	}
 
 	return &cfg, nil
