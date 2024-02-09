@@ -69,7 +69,7 @@ func main() {
 	//r.AddRoute("/learn", h.HandleUpdateTransactionWebHook)
 
 	//run
-	err = r.Run(8080)
+	err = r.Run(cfg.Port)
 	if err != nil {
 		panic(err)
 	}
