@@ -32,6 +32,7 @@ func TestNewConfig(t *testing.T) {
 		// Set up temporary environment variables for testing
 		os.Setenv("FF_API_KEY", "test_api_key")
 		os.Setenv("FF_APP_URL", "test_app_url")
+		os.Setenv("PORT","8080")
 
 		// Create a new config
 		cfg, err := NewConfig()
@@ -48,10 +49,14 @@ func TestNewConfig(t *testing.T) {
 		if cfg.FFApp != "test_app_url" {
 			t.Errorf("Expected FFApp to be 'test_app_url', but got: %s", cfg.FFApp)
 		}
+		if cfg.Port != 8080 {
+			t.Error("Expected Port to be '8080', but got something else")
+	        }
 
 		// Clean up the environment variables after the test
 		os.Unsetenv("FF_API_KEY")
 		os.Unsetenv("FF_APP_URL")
+		os.Unsetenv("PORT")
 	})
 
 	t.Run("MissingEnvVars", func(t *testing.T) {
